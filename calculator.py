@@ -1,19 +1,40 @@
 print("Welcome to My Calculator!")
 
-num1 = float(input("Enter first number: "))
-operator = input("Choose (+, -, *, /): ")
-num2 = float(input("Enter second number: "))
+while True:
+    first = input("Enter first number (or exit): ")
 
-if operator == "+":
-    print("Result:", num1 + num2)
-elif operator == "-":
-    print("Result:", num1 - num2)
-elif operator == "*":
-    print("Result:", num1 * num2)
-elif operator == "/":
-    if num2 != 0:
-        print("Result:", num1 / num2)
+    if first.lower() == "exit":
+        print("Goodbye!")
+        break
+
+    try:
+        num1 = float(first)
+    except ValueError:
+        print("Please enter a valid number!")
+        continue
+
+    operator = input("Choose (+, -, *, /): ")
+
+    try:
+        num2 = float(input("Enter second number: "))
+    except ValueError:
+        print("Please enter a valid number!")
+        continue
+
+    if operator == "+":
+        print("Result:", num1 + num2)
+
+    elif operator == "-":
+        print("Result:", num1 - num2)
+
+    elif operator == "*":
+        print("Result:", num1 * num2)
+
+    elif operator == "/":
+        if num2 != 0:
+            print("Result:", num1 / num2)
+        else:
+            print("Cannot divide by zero!")
+
     else:
-        print("Cannot divide by zero!")
-else:
-    print("Invalid operator!")
+        print("Invalid operator!")
